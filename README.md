@@ -26,7 +26,13 @@ This PHP class can get the volleybal matches/calendar.
 ``` php
 use JeroenDesloovere\VolleyAdmin2\VolleyAdmin2;
 
+// Change by your custom items
+$clubNumber = 'W-1132';
+$provinceId = 9;
+$seriesId = '2 PDA'; // Tweede provinciale dames A
+
 $api = new VolleyAdmin2();
+
 $matches = $api->getMatches(
     $seriesId,
     $provinceId,
