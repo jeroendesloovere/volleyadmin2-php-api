@@ -130,11 +130,11 @@ class VolleyAdmin2
         $clubNumber = null
     ) {
         // Init parameters
-        $parameters = $this->buildParameters([
+        $parameters = $this->buildParameters(array(
             'seriesId' => $seriesId,
             'provinceId' => $provinceId,
             'clubNumber' => $clubNumber,
-        ]);
+        ));
 
         return $this->doCall(self::API_METHOD_MATCHES, $parameters);
     }
@@ -149,9 +149,9 @@ class VolleyAdmin2
         $provinceId = null
     ) {
         // Init parameters
-        $parameters = $this->buildParameters([
+        $parameters = $this->buildParameters(array(
             'provinceId' => $provinceId,
-        ]);
+        ));
 
         return $this->doCall(self::API_METHOD_TEAMS, $parameters);
     }
@@ -168,10 +168,10 @@ class VolleyAdmin2
         $provinceId = null
     ) {
         // Init parameters
-        $parameters = $this->buildParameters([
+        $parameters = $this->buildParameters(array(
             'seriesId' => $seriesId,
             'provinceId' => $provinceId,
-        ]);
+        ));
 
         return $this->doCall(self::API_METHOD_STANDINGS, $parameters);
     }
