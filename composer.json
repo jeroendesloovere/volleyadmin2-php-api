@@ -1,0 +1,27 @@
+{
+    "name": "jeroendesloovere/package-skeleton",
+	"type": "library",
+    "description": "A skeleton package to use as a base",
+    "keywords": ["skeleton"],
+    "homepage": "https://github.com/jeroendesloovere/package-skeleton",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeroen Desloovere",
+            "email": "info@jeroendesloovere.be",
+            "homepage": "http://jeroendesloovere.be",
+			"role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "dev-master@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "JeroenDesloovere\\VolleyAdmin2\\": "src/"
+        }
+    }
+}
