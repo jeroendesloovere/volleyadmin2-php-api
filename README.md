@@ -24,13 +24,24 @@ This PHP class can get the volleybal matches/calendar.
 ### Example
 
 ``` php
-use JeroenDesloovere\VolleyAdmin2;
+use JeroenDesloovere\VolleyAdmin2\VolleyAdmin2;
 
-$skeleton = new VolleyAdmin2();
-echo $skeleton->echoPhrase('Hello, World!');
+$api = new VolleyAdmin2();
+$matches = $api->getMatches(
+    $seriesId,
+    $provinceId,
+    $clubNumber
+);
+
+$series = $api->getSeries($provinceId);
+
+$standings = $api->getStandings(
+    $seriesId,
+    $provinceId
+);
 
 ```
-> [View all examples](/examples/example.php) or check [the VolleyAdmin2 class](/src/).
+> [View all examples](/examples/) or check [the VolleyAdmin2 class](/src/).
 
 ### Tests
 
@@ -66,7 +77,7 @@ More info on how to work with GitHub on help.github.com.
 
 ## Credits
 
-- [:author_name](https://github.com/:author_username)
+- [Jeroen Desloovere](https://github.com/jeroendesloovere)
 - [All Contributors](https://github.com/jeroendesloovere/volleyadmin2-php-api/contributors)
 
 ## License
