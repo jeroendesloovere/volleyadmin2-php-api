@@ -1,9 +1,9 @@
 {
-    "name": "jeroendesloovere/package-skeleton",
+    "name": "jeroendesloovere/volleyadmin2-php-api",
 	"type": "library",
-    "description": "A skeleton package to use as a base",
-    "keywords": ["skeleton"],
-    "homepage": "https://github.com/jeroendesloovere/package-skeleton",
+    "description": "This VolleyAdmin2 class can get the volleybal matches/calendar in Belgium for the KWVBV.",
+    "keywords": ["volleybal", "kwvbv", "belgium", "api", "php"],
+    "homepage": "https://github.com/jeroendesloovere/volleyadmin2-php-api",
     "license": "MIT",
     "authors": [
         {
