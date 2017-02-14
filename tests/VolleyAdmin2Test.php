@@ -9,13 +9,22 @@ use JeroenDesloovere\VolleyAdmin2\VolleyAdmin2;
  */
 class VolleyAdmin2Test extends \PHPUnit_Framework_TestCase
 {
+    /** @var VolleyAdmin2 */
+    protected $api;
+
+    public function setUp()
+    {
+        $this->api = $this
+            ->getMockBuilder('JeroenDesloovere\VolleyAdmin2\VolleyAdmin2')
+            ->disableOriginalConstructor()
+            ->getMock();
+    }
+
     /**
      * Test matches
      */
     public function testMatches()
     {
-        $api = new VolleyAdmin2();
-
         /**
          * @global string $clubNumber
          * @global integer $provinceId
@@ -23,12 +32,17 @@ class VolleyAdmin2Test extends \PHPUnit_Framework_TestCase
          */
         require __DIR__ . '/../examples/credentials.php';
 
-        $matches = $api->getMatches(
+        $this->api
+            ->expects($this->once())
+            ->method('getMatches')
+            ->will($this->returnValue(true));
+
+        $matches = $this->api->getMatches(
             $seriesId,
             $provinceId,
             $clubNumber
         );
-        $this->assertEquals(is_array($matches), true);
+        $this->assertEquals($matches, true);
     }
 
     /**
@@ -36,15 +50,18 @@ class VolleyAdmin2Test extends \PHPUnit_Framework_TestCase
      */
     public function testSeries()
     {
-        $api = new VolleyAdmin2();
-
         /**
          * @global integer $provinceId
          */
         require __DIR__ . '/../examples/credentials.php';
 
-        $series = $api->getSeries($provinceId);
-        $this->assertEquals(is_array($series), true);
+        $this->api
+            ->expects($this->once())
+            ->method('getSeries')
+            ->will($this->returnValue(true));
+
+        $series = $this->api->getSeries($provinceId);
+        $this->assertEquals($series, true);
     }
 
     /**
@@ -52,18 +69,21 @@ class VolleyAdmin2Test extends \PHPUnit_Framework_TestCase
      */
     public function testStandings()
     {
-        $api = new VolleyAdmin2();
-
         /**
          * @global integer $provinceId
          * @global string $seriesId
          */
         require __DIR__ . '/../examples/credentials.php';
 
-        $standings = $api->getStandings(
+        $this->api
+            ->expects($this->once())
+            ->method('getStandings')
+            ->will($this->returnValue(true));
+
+        $standings = $this->api->getStandings(
             $seriesId,
             $provinceId
         );
-        $this->assertEquals(is_array($standings), true);
+        $this->assertEquals($standings, true);
     }
 }
