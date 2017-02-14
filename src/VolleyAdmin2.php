@@ -21,6 +21,7 @@ class VolleyAdmin2
      *
      * @param array $parameters
      * @return array
+     * @throws Exception
      */
     protected function buildParameters($parameters)
     {
@@ -60,6 +61,8 @@ class VolleyAdmin2
      *
      * @param string $method
      * @param array $parameters
+     * @return bool|mixed
+     * @throws Exception
      */
     protected function doCall($method, $parameters = array())
     {
