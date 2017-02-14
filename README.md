@@ -12,14 +12,10 @@ This PHP class can get the volleybal matches/calendar.
 
 ### Installation
 
-``` json
-{
-    "require": {
-        "jeroendesloovere/volleyadmin2-php-api": "1.0.*"
-    }
-}
 ```
-> Adding this code in your `composer.json` file will get the [latest volleyadmin2-php-api Packagist package](https://packagist.org/packages/jeroendesloovere/volleyadmin2-php-api) using [Composer](https://getcomposer.org).
+composer require jeroendesloovere/volleyadmin2-php-api
+```
+> This will install the latest version of vcard using [Composer](https://getcomposer.org).
 
 ### Example
 
