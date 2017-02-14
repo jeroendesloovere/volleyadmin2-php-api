@@ -1,5 +1,7 @@
 <?php
 
+namespace JeroenDesloovere\VolleyAdmin2\Tests;
+
 use JeroenDesloovere\VolleyAdmin2\VolleyAdmin2;
 
 /**
