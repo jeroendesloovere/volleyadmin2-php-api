@@ -15,46 +15,11 @@ class VolleyAdmin2
     const API_METHOD_STANDINGS = 'rangschikking';
     const API_METHOD_MATCHES = 'wedstrijden';
     const API_METHOD_TEAMS = 'series';
-
-    /**
-     * Build parameters
-     *
-     * @param array $parameters
-     * @return array
-     * @throws Exception
-     */
-    protected function buildParameters($parameters)
-    {
-        $result = array();
-
-        // We loop all parameters to find their real key (= dutch key which the API uses)
-        foreach ($parameters as $key => $value) {
-            // If null we ignore the parameter
-            if ($value != null) {
-                $realKey = '';
-
-                switch ($key) {
-                    case 'clubNumber':
-                        $realKey = 'stamnummer';
-                        break;
-                    case 'provinceId':
-                        $realKey = 'province_id';
-                        break;
-                    case 'seriesId':
-                        $realKey = 'reeks';
-                        break;
-                    default:
-                        throw new Exception('The key "' . $key . '" is invalid.');
-                        break;
-                }
-
-                // Add to result
-                $result[$realKey] = $value;
-            }
-        }
-
-        return $result;
-    }
+    
+    // Possible variables
+    const CLUB_NUMBER = 'stamnummer';
+    const PROVINCE_ID = 'province_id';
+    const SERIES_ID = 'reeks';
 
     /**
      * Do call
@@ -120,6 +85,45 @@ class VolleyAdmin2
     }
 
     /**
+     * Check parameters
+     *
+     * @param array $parameters
+     * @return array
+     * @throws Exception
+     */
+    protected function checkParameters($parameters)
+    {
+        $result = array();
+
+        // We loop all parameters to find their real key (= dutch key which the API uses)
+        foreach ($parameters as $key => $value) {
+            // If null we ignore the parameter
+            if ($value !== null) {
+                if (!in_array($key, $this->getPossibleParameters())) {
+                    throw new Exception('The key "' . $key . '" is invalid.');
+                }
+
+                // Add to result
+                $result[$key] = $value;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * @return array
+     */
+    private function getPossibleParameters()
+    {
+        return array(
+            self::CLUB_NUMBER,
+            self::PROVINCE_ID,
+            self::SERIES_ID,
+        );
+    }
+
+    /**
      * Get matches
      *
      * @param string $seriesId
@@ -133,10 +137,10 @@ class VolleyAdmin2
         $clubNumber = null
     ) {
         // Init parameters
-        $parameters = $this->buildParameters(array(
-            'seriesId' => $seriesId,
-            'provinceId' => $provinceId,
-            'clubNumber' => $clubNumber,
+        $parameters = $this->checkParameters(array(
+            self::SERIES_ID => $seriesId,
+            self::PROVINCE_ID => $provinceId,
+            self::CLUB_NUMBER => $clubNumber,
         ));
 
         return $this->doCall(self::API_METHOD_MATCHES, $parameters);
@@ -152,8 +156,8 @@ class VolleyAdmin2
         $provinceId = null
     ) {
         // Init parameters
-        $parameters = $this->buildParameters(array(
-            'provinceId' => $provinceId,
+        $parameters = $this->checkParameters(array(
+            self::PROVINCE_ID => $provinceId,
         ));
 
         return $this->doCall(self::API_METHOD_TEAMS, $parameters);
@@ -171,9 +175,9 @@ class VolleyAdmin2
         $provinceId = null
     ) {
         // Init parameters
-        $parameters = $this->buildParameters(array(
-            'seriesId' => $seriesId,
-            'provinceId' => $provinceId,
+        $parameters = $this->checkParameters(array(
+            self::SERIES_ID => $seriesId,
+            self::PROVINCE_ID => $provinceId,
         ));
 
         return $this->doCall(self::API_METHOD_STANDINGS, $parameters);
