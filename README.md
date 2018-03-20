@@ -22,7 +22,7 @@ composer require jeroendesloovere/volleyadmin2-php-api
 ``` php
 use JeroenDesloovere\VolleyAdmin2\VolleyAdmin2;
 
-// Change by your custom items
+// Fill in these custom variables
 $clubNumber = 'W-1132';
 $provinceId = 9;
 $seriesId = '2 PDA'; // Tweede provinciale dames A
