@@ -47,8 +47,9 @@ $standings = $api->getStandings(
 
 ### Tests
 
+You can execute the test using:
 ``` bash
-$ phpunit
+phpunit
 ```
 
 ## Documentation
