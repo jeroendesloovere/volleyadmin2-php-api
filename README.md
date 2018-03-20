@@ -47,7 +47,7 @@ $standings = $api->getStandings(
 
 ### Tests
 
-You can execute the test using:
+You can execute the tests using:
 ``` bash
 phpunit
 ```
