@@ -1,12 +1,10 @@
-# volleyadmin2-php-api
-This PHP class can get the volleybal matches/calendar.
-
 # VolleyAdmin2 PHP API
 [![Latest Stable Version](http://img.shields.io/packagist/v/jeroendesloovere/volleyadmin2-php-api.svg)](https://packagist.org/packages/jeroendesloovere/volleyadmin2-php-api)
 [![License](http://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/jeroendesloovere/volleyadmin2-php-api/blob/master/LICENSE)
 [![Build Status](http://img.shields.io/travis/jeroendesloovere/volleyadmin2-php-api.svg)](https://travis-ci.org/jeroendesloovere/volleyadmin2-php-api)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jeroendesloovere/volleyadmin2-php-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jeroendesloovere/volleyadmin2-php-api/?branch=master)
 
-> This PHP class can get the volleybal matches/calendar.
+> This PHP class can get the volleybal matches/calendar from the `VolleyAdmin2` API.
 
 ## Usage
 
