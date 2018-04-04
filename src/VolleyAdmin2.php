@@ -26,7 +26,7 @@ class VolleyAdmin2
      *
      * @param string $method
      * @param array $parameters
-     * @return bool|mixed
+     * @return array
      * @throws Exception
      */
     protected function doCall($method, $parameters = array())
@@ -55,30 +55,23 @@ class VolleyAdmin2
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_TIMEOUT, 10);
 
-        // execute
+        // execute curl
         $response = curl_exec($curl);
 
-        // get HTTP response code
-        $httpCode = (int) curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        // fetch errors from curl
+        $errorNumber = curl_errno($curl);
+        $errorMessage = curl_error($curl);
 
-        // close
+        // close curl
         curl_close($curl);
 
-        // response is empty or false
-        if (empty($response)) {
-            throw new Exception('Error: ' . $response);
+        // we have errors
+        if ($errorNumber != '') {
+            throw new Exception($errorMessage);
         }
 
-        // init result
-        $result = false;
-
-        // successfull response
-        if (($httpCode == 200) || ($httpCode == 201)) {
-            $result = json_decode($response);
-        }
-
-        // return
-        return $result;
+        // redefine response as json decoded
+        return json_decode($response);
     }
 
     /**
@@ -124,59 +117,61 @@ class VolleyAdmin2
      * Get matches
      *
      * @param string $seriesId
-     * @param integer $provinceId
+     * @param int $provinceId
      * @param string $clubNumber
-     * @return json
+     * @return array
+     * @throws Exception
      */
     public function getMatches(
         $seriesId = null,
         $provinceId = null,
         $clubNumber = null
     ) {
-        // Init parameters
-        $parameters = $this->checkParameters(array(
-            self::SERIES_ID => $seriesId,
-            self::PROVINCE_ID => $provinceId,
-            self::CLUB_NUMBER => $clubNumber,
-        ));
-
-        return $this->doCall(self::API_METHOD_MATCHES, $parameters);
+        return $this->doCall(
+            self::API_METHOD_MATCHES,
+            $this->checkParameters(array(
+                self::SERIES_ID => $seriesId,
+                self::PROVINCE_ID => $provinceId,
+                self::CLUB_NUMBER => $clubNumber,
+            ))
+        );
     }
 
     /**
      * Get series
      *
-     * @param integer $provinceId   Fill in if you want to filter for province.
-     * @return json
+     * @param int $provinceId - Fill in if you want to filter for province.
+     * @return array
+     * @throws Exception
      */
-    public function getSeries(
-        $provinceId = null
-    ) {
-        // Init parameters
-        $parameters = $this->checkParameters(array(
-            self::PROVINCE_ID => $provinceId,
-        ));
-
-        return $this->doCall(self::API_METHOD_TEAMS, $parameters);
+    public function getSeries($provinceId = null)
+    {
+        return $this->doCall(
+            self::API_METHOD_TEAMS,
+            $this->checkParameters(array(
+                self::PROVINCE_ID => $provinceId,
+            ))
+        );
     }
 
     /**
      * Get standings
      *
      * @param string $seriesId
-     * @param integer $provinceId
-     * @return json
+     * @param int $provinceId
+     * @return array
+     * @throws Exception
      */
     public function getStandings(
         $seriesId = null,
         $provinceId = null
     ) {
-        // Init parameters
-        $parameters = $this->checkParameters(array(
-            self::SERIES_ID => $seriesId,
-            self::PROVINCE_ID => $provinceId,
-        ));
-
-        return $this->doCall(self::API_METHOD_STANDINGS, $parameters);
+        return $this->doCall(
+            self::API_METHOD_STANDINGS,
+            $this->checkParameters(array(
+                self::SERIES_ID => $seriesId,
+                self::PROVINCE_ID => $provinceId,
+            ))
+        );
     }
 }
