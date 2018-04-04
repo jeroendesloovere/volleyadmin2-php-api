@@ -55,9 +55,6 @@ class VolleyAdmin2
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_TIMEOUT, 10);
 
-        // init headers
-        $headers = array();
-
         // execute
         $response = curl_exec($curl);
 
