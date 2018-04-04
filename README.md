@@ -13,7 +13,7 @@
 ```
 composer require jeroendesloovere/volleyadmin2-php-api
 ```
-> This will install the latest version of vcard using [Composer](https://getcomposer.org).
+> This will install the latest version of this library using [Composer](https://getcomposer.org).
 
 ### Example
 
