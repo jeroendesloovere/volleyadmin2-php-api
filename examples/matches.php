@@ -28,6 +28,4 @@ $matches = $api->getMatches(
 
 foreach ($matches as $match) {
     var_dump($match);
-    echo '<br/>' . $match->t . ' ' . $match->Aanvangsuur . ': ' . $match->Thuis . ' - ' . $match->Bezoekers;
-    echo '<br/>Location: ' . $match->SporthalNaam;
 }
