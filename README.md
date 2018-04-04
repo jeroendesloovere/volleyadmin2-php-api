@@ -47,7 +47,7 @@ $standings = $api->getStandings(
 
 You can execute the tests using:
 ``` bash
-phpunit
+vendor/bin/phpunit tests
 ```
 
 ### Coding Syntax

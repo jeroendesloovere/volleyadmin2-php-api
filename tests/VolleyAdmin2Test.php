@@ -3,13 +3,14 @@
 namespace JeroenDesloovere\VolleyAdmin2\Tests;
 
 use JeroenDesloovere\VolleyAdmin2\VolleyAdmin2;
+use PHPUnit\Framework\TestCase;
 
 /**
  * In this class we test all generic functions from VolleyAdmin2.
  *
  * @author Jeroen Desloovere <info@jeroendesloovere.be>
  */
-class VolleyAdmin2Test extends \PHPUnit_Framework_TestCase
+class VolleyAdmin2Test extends TestCase
 {
     /** @var VolleyAdmin2 */
     protected $api;
