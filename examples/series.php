@@ -23,5 +23,5 @@ $api = new VolleyAdmin2();
 $series = $api->getSeries($provinceId);
 
 foreach ($series as $serie) {
-    echo '<br/>' . $serie->id . ' - ' . $serie->name . ' - ' . $serie->abbreviation;
+    var_dump($serie);
 }
