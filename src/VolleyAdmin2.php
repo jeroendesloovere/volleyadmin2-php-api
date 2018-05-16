@@ -87,15 +87,15 @@ class VolleyAdmin2
 
         // We loop all parameters to find their real key (= dutch key which the API uses)
         foreach ($parameters as $key => $value) {
-            // If null we ignore the parameter
-            if ($value !== null) {
-                if (!in_array($key, $this->getPossibleParameters())) {
-                    throw new Exception('The key "' . $key . '" is invalid.');
-                }
-
-                // Add to result
-                $result[$key] = $value;
+            if ($value === null) {
+                continue;
             }
+
+            if (!in_array($key, $this->getPossibleParameters())) {
+                throw new Exception('The key "' . $key . '" is invalid.');
+            }
+
+            $result[$key] = $value;
         }
 
         return $result;
