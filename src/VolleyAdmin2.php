@@ -51,23 +51,25 @@ class VolleyAdmin2
         $curl = curl_init();
 
         // set options
-        curl_setopt($curl, CURLOPT_URL, $endPoint);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_TIMEOUT, 10);
+        curl_setopt_array($curl, [
+            CURLOPT_URL => $endPoint,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => 10,
+            CURLOPT_CONNECTTIMEOUT => 5,
+        ]);
 
         // execute curl
         $response = curl_exec($curl);
 
         // fetch errors from curl
-        $errorNumber = curl_errno($curl);
         $errorMessage = curl_error($curl);
 
         // close curl
         curl_close($curl);
 
         // we have errors
-        if ($errorNumber != '') {
-            throw new Exception($errorMessage);
+        if ($response === false) {
+            throw new \RuntimeException($errorMessage);
         }
 
         // redefine response as json decoded
